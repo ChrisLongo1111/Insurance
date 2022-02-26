@@ -63,7 +63,7 @@ describe('Quote with two employees and two dependents each with all names starti
   employee.dependents.push(dependent);
   quote.employees.push(employee);
 
-  it('should be 3800', () => {
+  it('should be 3600', () => {
     expect(quote.calculate()).toBe(3600);
   });
 });
