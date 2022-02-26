@@ -1,21 +1,21 @@
+<form (ngSubmit)="onConfirm()" #personForm="ngForm">
+    <h1 mat-dialog-title>
+        {{title}}
+    </h1>
+    <div mat-dialog-content>
+        <mat-form-field>
+            <mat-label>First name</mat-label>
+            <input matInput name="firstName" [(ngModel)]="person.firstName" required #firstName="ngModel">
+        </mat-form-field>
 
-<h1 mat-dialog-title>
-    {{title}}
-</h1>
+        <mat-form-field>
+            <mat-label>Last name</mat-label>
+            <input matInput name="lastName" [(ngModel)]="person.lastName" required #lastName="ngModel">
+        </mat-form-field>
+    </div>
 
-<div mat-dialog-content>
-    <mat-form-field>
-        <mat-label>First name</mat-label>
-        <input matInput [(ngModel)]="person.firstName" required #firstName="ngModel">
-    </mat-form-field>
-
-    <mat-form-field>
-        <mat-label>Last name</mat-label>
-        <input matInput [(ngModel)]="person.lastName" required #lastName="ngModel">
-    </mat-form-field>
-</div>
-
-<div mat-dialog-actions>
-    <button mat-button (click)="onDismiss()">No</button>
-    <button mat-raised-button color="primary" [disabled]="lastName.invalid || firstName.invalid" (click)="onConfirm()">Yes</button>
-</div>
+    <div mat-dialog-actions>
+        <button type="button" mat-button (click)="onDismiss()">No</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="personForm.invalid">Yes</button>
+    </div>
+</form>

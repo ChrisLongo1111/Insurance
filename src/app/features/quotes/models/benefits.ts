@@ -21,6 +21,15 @@ export class Benefits {
         return cost;
     }
 
+    public static getEmployeeCost(employee: Employee): number {
+        let quote: number = 0;
+        quote += Benefits.getCost(employee);
+        employee.dependents.forEach(dependent => {
+            quote += Benefits.getCost(dependent);
+        })
+        return quote;
+    }
+
     public static getIncome(person: Person): number {
         if (person instanceof Employee) {
             return 2000;

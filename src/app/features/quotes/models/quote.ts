@@ -7,10 +7,7 @@ export class Quote {
     public calculate(): number {
         let quote = 0;
         this.employees.forEach(employee => {
-            quote += Benefits.getCost(employee);
-            employee.dependents.forEach(dependent => {
-                quote += Benefits.getCost(dependent);
-            })
+            quote += Benefits.getEmployeeCost(employee);
         })
         return quote;
     }

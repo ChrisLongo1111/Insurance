@@ -9,52 +9,35 @@
             <button mat-button (click)="accordion.closeAll()">Collapse All</button>
         </span>
     </div>
-    <mat-accordion class="quote__employee" multi>
-        <mat-expansion-panel *ngFor="let employee of quote.employees">
+    <mat-accordion class="quote__employee" [multi]="true">
+        <mat-expansion-panel *ngFor="let employee of quote.employees; let i = index;">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon>account_circle</mat-icon>
-                    Employee
+                    <mat-label>Employee {{employee.firstName}} {{employee.lastName}}</mat-label>
                 </mat-panel-title>
             </mat-expansion-panel-header>
-      
-            <mat-form-field appearance="fill">
-                <mat-label>First name</mat-label>
-                <input matInput [(ngModel)]="employee.firstName" (ngModelChange)="quoteChanged()" required >
-            </mat-form-field>
-      
-            <mat-form-field appearance="fill">
-                <mat-label>Last name</mat-label>
-                <input matInput [(ngModel)]="employee.lastName" required>
-            </mat-form-field>
-
-            <button mat-button (click)="deleteEmployee(employee)">
-                <mat-icon>delete</mat-icon>
+            <button mat-button (click)="editEmployee(employee);">
+                Edit
             </button>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                <mat-panel-title>
-                    <mat-icon>face</mat-icon>
-                    Dependents
-                    <button mat-button>
-                        Add Dependent
-                    </button>
-                </mat-panel-title>
-            </mat-expansion-panel-header>
-            <ng-container  *ngFor="let dependent of employee.dependents">
-                <mat-form-field appearance="fill">
-                    <mat-label>First name</mat-label>
-                    <input matInput [(ngModel)]="dependent.firstName" (ngModelChange)="quoteChanged()" required>
-                </mat-form-field>
-                <mat-form-field appearance="fill">
-                    <mat-label>Last name</mat-label>
-                    <input matInput [(ngModel)]="dependent.lastName" required>
-                </mat-form-field>      
-                <button mat-button (click)="deleteDependent(employee, dependent)">
-                    <mat-icon>delete</mat-icon>
+            <button mat-button (click)="deleteEmployee(employee);">
+                Remove
+            </button>
+            <div>
+                <label>Dependents</label>
+                <button mat-button (click)="addDependent(employee);">
+                    Add
                 </button>
-            </ng-container>
-            </mat-expansion-panel>
+            </div>
+            <div *ngFor="let dependent of employee.dependents">
+                <mat-label>{{dependent.firstName}} {{dependent.lastName}}</mat-label>
+                <button mat-button (click)="editDependent(dependent);">
+                    Edit
+                </button>
+                <button mat-button (click)="deleteDependent(employee, dependent);">
+                    Remove
+                </button>
+            </div>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
