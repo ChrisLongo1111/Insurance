@@ -14,7 +14,7 @@
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon>account_circle</mat-icon>
-                    <mat-label>Employee {{employee.firstName}} {{employee.lastName}}</mat-label>
+                    <mat-label>Employee {{employee.firstName}} {{employee.lastName}} - {{ employeesQuote[i] | currency}}</mat-label>
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <button mat-button (click)="editEmployee(employee);">

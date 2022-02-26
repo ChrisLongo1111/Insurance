@@ -11,4 +11,12 @@ export class Quote {
         })
         return quote;
     }
+
+    public calculateByEmployee(): Array<number> {
+        const quoteByEmployee: Array<number> = [];
+        this.employees.forEach(employee => {
+            quoteByEmployee.push(Benefits.getEmployeeCost(employee));
+        })
+        return quoteByEmployee;
+    }
 }

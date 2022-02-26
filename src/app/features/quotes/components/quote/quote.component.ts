@@ -23,6 +23,7 @@ export class QuoteComponent implements OnInit {
     
   public quoteAmount: number = 0;
   public quote: Quote = new Quote();
+  public employeesQuote: Array<number> = []
   
   constructor(public dialog: MatDialog, private zone: NgZone) { 
   }
@@ -33,6 +34,7 @@ export class QuoteComponent implements OnInit {
 
   public quoteChanged(): void {
     this.quoteAmount = this.quote.calculate();
+    this.employeesQuote = this.quote.calculateByEmployee();
   }
 
   public addEmployee(): void {
