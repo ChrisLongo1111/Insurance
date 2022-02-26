@@ -1,0 +1,32 @@
+.quote {
+    width: 70%;
+    margin: auto;
+
+    &__employee {
+        margin: 5px;
+    }
+
+    &__right-align {
+        float: right;
+    }
+
+    mat-panel-title {
+        mat-icon {
+            margin: 5px 15px 5px 5px;
+        }
+    }
+
+    .mat-expansion-panel-header-title,
+    .mat-expansion-panel-header-description {
+        flex-basis: auto;
+        flex-grow: 0;
+    }
+    
+    .mat-expansion-panel-header-description {
+        justify-content: flex-start;
+    }
+
+    .mat-form-field + .mat-form-field {
+        margin-left: 8px;
+    }
+}

@@ -1,1 +1,60 @@
-<p>quote works!</p>
+<div class="quote">
+    <div class="quote__action-buttons">
+        <mat-label>Quote: {{ quoteAmount | currency }}</mat-label>
+        <button mat-button (click)="addEmployee()">
+            Add Employee
+        </button>
+        <span class="quote__right-align">
+            <button mat-button (click)="accordion.openAll()">Expand All</button>
+            <button mat-button (click)="accordion.closeAll()">Collapse All</button>
+        </span>
+    </div>
+    <mat-accordion class="quote__employee" multi>
+        <mat-expansion-panel *ngFor="let employee of quote.employees">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>account_circle</mat-icon>
+                    Employee
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+      
+            <mat-form-field appearance="fill">
+                <mat-label>First name</mat-label>
+                <input matInput [(ngModel)]="employee.firstName" (ngModelChange)="quoteChanged()" required >
+            </mat-form-field>
+      
+            <mat-form-field appearance="fill">
+                <mat-label>Last name</mat-label>
+                <input matInput [(ngModel)]="employee.lastName" required>
+            </mat-form-field>
+
+            <button mat-button (click)="deleteEmployee(employee)">
+                <mat-icon>delete</mat-icon>
+            </button>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                <mat-panel-title>
+                    <mat-icon>face</mat-icon>
+                    Dependents
+                    <button mat-button>
+                        Add Dependent
+                    </button>
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container  *ngFor="let dependent of employee.dependents">
+                <mat-form-field appearance="fill">
+                    <mat-label>First name</mat-label>
+                    <input matInput [(ngModel)]="dependent.firstName" (ngModelChange)="quoteChanged()" required>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Last name</mat-label>
+                    <input matInput [(ngModel)]="dependent.lastName" required>
+                </mat-form-field>      
+                <button mat-button (click)="deleteDependent(employee, dependent)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </ng-container>
+            </mat-expansion-panel>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
