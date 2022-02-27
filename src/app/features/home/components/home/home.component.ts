@@ -5,14 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
-  public title: string = 'insurance';
-
+export class HomeComponent {
   constructor() { 
-
   }
-
-  public ngOnInit(): void {
-  }
-
 }

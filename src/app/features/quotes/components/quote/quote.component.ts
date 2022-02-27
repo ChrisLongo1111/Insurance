@@ -5,6 +5,7 @@ import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
 import { take } from 'rxjs';
 
 import { ConfirmDialogComponent, ConfirmDialogModel } from 'src/app/features/ux/components/confirm-dialog/confirm-dialog.component';
+import { MessageDialogComponent, MessageDialogModel } from 'src/app/features/ux/message-dialog/message-dialog.component';
 import { Dependent } from '../../models/dependent';
 import { Employee } from '../../models/employee';
 import { Person } from '../../models/person';
@@ -103,9 +104,9 @@ export class QuoteComponent implements OnInit {
     });
   }
 
-  public addDependent(employee: Employee): void {
-    const dependent = new Dependent();
+  public addDependent(employee: Employee, index: number): void {
 
+    const dependent = new Dependent();
     const dialogData = new PersonDialogModel("Add Dependent", dependent);
     const dialogRef = this.dialog.open(PersonDialogComponent, {
       maxWidth: "400px",
@@ -116,6 +117,10 @@ export class QuoteComponent implements OnInit {
       if (dialogResult) {
         employee.dependents.push(dependent);
         this.quoteChanged();
+        if (employee.income < this.employeesQuote[index]) {
+          this.removeDependent(employee, dependent);         
+          this.displayMessage('Limit Exceeded', 'Benefits exceeded income');
+        }
       }
     });
   }
@@ -149,12 +154,25 @@ export class QuoteComponent implements OnInit {
 
     dialogRef.afterClosed().pipe(take(1)).subscribe(dialogResult => {
       if (dialogResult) {
-        const index = employee.dependents.indexOf(dependent);
-        if (index !== -1) {
-          employee.dependents.splice(index, 1);
-          this.quoteChanged();
-        }
+        this.removeDependent(employee, dependent);
       }
     });
+  }
+
+  private removeDependent(employee: Employee, dependent: Dependent) {
+    const index = employee.dependents.indexOf(dependent);
+    if (index !== -1) {
+      employee.dependents.splice(index, 1);
+      this.quoteChanged();
+    }
+  }
+
+  private displayMessage(title: string, message: string): void {
+    const dialogData = new MessageDialogModel(title, message);
+    const dialogRef = this.dialog.open(MessageDialogComponent, {
+      maxWidth: "400px",
+      data: dialogData
+    });
+
   }
 }

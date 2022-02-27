@@ -3,16 +3,18 @@ import { CommonModule } from '@angular/common';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog'
+import { MessageDialogComponent } from './message-dialog/message-dialog.component';
 
 @NgModule({
   declarations: [
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    MessageDialogComponent
   ],
   imports: [
     CommonModule,
     MatButtonModule,
     MatDialogModule
   ],
-  exports: [ConfirmDialogComponent]
+  exports: [ConfirmDialogComponent, MessageDialogComponent]
 })
 export class UxModule { }
