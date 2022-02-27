@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    pathMatch: 'prefix', //default
+    pathMatch: 'prefix',
     redirectTo: 'home'
   },
   {

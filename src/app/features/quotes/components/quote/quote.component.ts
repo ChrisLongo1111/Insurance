@@ -11,7 +11,6 @@ import { Employee } from '../../models/employee';
 import { Person } from '../../models/person';
 import { Quote } from '../../models/quote';
 import { MockQuoteService } from '../../services/mock-quote.service';
-import { QuoteService } from '../../services/quote.service';
 import { PersonDialogComponent, PersonDialogModel } from '../person-dialog/person-dialog.component';
 
 @Component({
