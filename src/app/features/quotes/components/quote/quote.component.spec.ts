@@ -6,6 +6,8 @@ import { QuotesModule } from '../../quotes.module';
 import { PersonDialogComponent } from '../person-dialog/person-dialog.component';
 import { ConfirmDialogComponent } from 'src/app/features/ux/components/confirm-dialog/confirm-dialog.component';
 import { QuoteComponent } from './quote.component';
+import { MockQuoteService } from '../../services/mock-quote.service';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('QuoteComponent', () => {
   let component: QuoteComponent;
@@ -18,11 +20,13 @@ describe('QuoteComponent', () => {
         QuotesModule,
         MatButtonModule,
         MatDialogModule,
-        UxModule
+        UxModule,
+        NoopAnimationsModule
       ],      
       providers: [
 	      { provide: MatDialogRef, useValue: {} },
 	      { provide: MAT_DIALOG_DATA, useValue: [] },
+        MockQuoteService
       ]   
     })
     .compileComponents();
