@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable } from 'rxjs';
-import { Quote } from '../models/quote';
+
+import { Quote } from '@features/quotes/models/quote';
 
 @Injectable({
   providedIn: 'any'

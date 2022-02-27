@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { QuoteComponent } from './components/quote/quote.component';
+
+import { QuoteComponent } from '@features/quotes/components/quote/quote.component';
 
 const routes: Routes = [{
   path: '',

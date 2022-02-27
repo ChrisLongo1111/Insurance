@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
 import { Observable, of } from 'rxjs';
-import { Dependent } from '../models/dependent';
-import { Employee } from '../models/employee';
-import { Quote } from '../models/quote';
+
+import { Dependent } from '@features/quotes/models/dependent';
+import { Employee } from '@features/quotes/models/employee';
+import { Quote } from '@features/quotes/models/quote';
 
 @Injectable({
   providedIn: 'any'

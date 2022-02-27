@@ -1,7 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QuoteComponent } from './components/quote/quote.component';
-import { QuoteRoutingModule } from './quote-routing.module';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,8 +9,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { UxModule } from '../ux/ux.module';
-import { PersonDialogComponent } from './components/person-dialog/person-dialog.component';
+
+import { PersonDialogComponent } from '@features/quotes/components/person-dialog/person-dialog.component';
+import { QuoteComponent } from '@features/quotes/components/quote/quote.component';
+import { QuoteRoutingModule } from '@features/quotes/quote-routing.module';
+import { UxModule } from '@features/ux/ux.module';
 
 @NgModule({
   declarations: [

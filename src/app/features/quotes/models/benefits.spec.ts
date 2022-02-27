@@ -1,7 +1,7 @@
-import { Benefits } from './benefits';
-import { Dependent } from './dependent';
-import { Employee } from './employee';
-import { Person } from './person';
+import { Benefits } from '@features/quotes/models/benefits';
+import { Dependent } from '@features/quotes/models/dependent';
+import { Employee } from '@features/quotes/models/employee';
+import { Person } from '@features/quotes/models/person';
 
 describe('Benefits', () => {
   it('employee cost should be 1000', () => {

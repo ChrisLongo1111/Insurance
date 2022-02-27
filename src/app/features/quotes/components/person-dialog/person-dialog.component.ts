@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Person } from '../../models/person';
+import { Person } from '@features/quotes/models/person';
 
 @Component({
   selector: 'app-person-dialog',

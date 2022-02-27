@@ -1,9 +1,9 @@
-import { environment } from "src/environments/environment";
-import { Dependent } from "./dependent";
-import { Discount } from "./discount";
-import { Employee } from "./employee";
-import { NameDiscount } from "./name-discount";
-import { Person } from "./person";
+import { environment } from "environments/environment";
+import { Dependent } from "@features/quotes/models/dependent";
+import { Discount } from "@features/quotes/models/discount";
+import { Employee } from "@features/quotes/models/employee";
+import { NameDiscount } from "@features/quotes/models/name-discount";
+import { Person } from "@features/quotes/models/person";
 
 export class Benefits {
     private static discounts: Array<Discount> = [new NameDiscount]
