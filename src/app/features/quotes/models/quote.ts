@@ -2,6 +2,7 @@ import { Benefits } from "./benefits";
 import { Employee } from "./employee";
 
 export class Quote {
+    public id: number | undefined;
     public employees: Array<Employee> = [];
 
     public calculate(): number {

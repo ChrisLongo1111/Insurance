@@ -1,4 +1,5 @@
 export class Person {
-    public firstName!: string;
-    public lastName!: string;
+    public id: number | undefined;
+    public firstName: string | undefined;
+    public lastName: string | undefined;
 }

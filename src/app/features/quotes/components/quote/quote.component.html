@@ -13,7 +13,7 @@
         </span>
     </div>
     <mat-accordion class="quote__employee" [multi]="true">
-        <mat-expansion-panel *ngFor="let employee of quote.employees; let i = index;">
+        <mat-expansion-panel *ngFor="let employee of quote.employees; let i = index; trackBy: trackByPersonId">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon>account_circle</mat-icon>
@@ -21,7 +21,7 @@
                 </mat-panel-title>
             </mat-expansion-panel-header>
             <button mat-button (click)="editEmployee(employee);">
-                Edit
+                Edit 
             </button>
             <button mat-button (click)="deleteEmployee(employee);">
                 Remove
@@ -32,7 +32,7 @@
                     Add
                 </button>
             </div>
-            <div *ngFor="let dependent of employee.dependents">
+            <div *ngFor="let dependent of employee.dependents; trackBy: trackByPersonId">
                 <mat-label>{{dependent.firstName}} {{dependent.lastName}}</mat-label>
                 <button mat-button (click)="editDependent(dependent);">
                     Edit

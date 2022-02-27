@@ -31,7 +31,7 @@ export class QuoteComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.quoteService.get().pipe(take(1)).subscribe(quote => {
+    this.quoteService.get(0).pipe(take(1)).subscribe(quote => {
       this.quote = quote;
       this.quoteChanged();
     });
@@ -47,7 +47,6 @@ export class QuoteComponent implements OnInit {
     const dialogData = new PersonDialogModel("Add Employee", employee);
 
     const dialogRef = this.dialog.open(PersonDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -77,7 +76,6 @@ export class QuoteComponent implements OnInit {
     const dialogData = new PersonDialogModel("Edit Employee", person);
 
     const dialogRef = this.dialog.open(PersonDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -93,7 +91,6 @@ export class QuoteComponent implements OnInit {
   public deleteEmployee(employee: Employee): void {
     const dialogData = new ConfirmDialogModel("Remove Employee", 'Are you sure you want to remove this employee?');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -117,11 +114,9 @@ export class QuoteComponent implements OnInit {
   } 
 
   public addDependent(employee: Employee, index: number): void {
-
     const dependent = new Dependent();
     const dialogData = new PersonDialogModel("Add Dependent", dependent);
     const dialogRef = this.dialog.open(PersonDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -144,7 +139,6 @@ export class QuoteComponent implements OnInit {
 
     const dialogData = new PersonDialogModel("Add Dependent", person);
     const dialogRef = this.dialog.open(PersonDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -160,7 +154,6 @@ export class QuoteComponent implements OnInit {
   public deleteDependent(employee: Employee, dependent: Dependent): void {
     const dialogData = new ConfirmDialogModel("Remove Dependent", 'Are you sure you want to remove this dependent?');
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
-      maxWidth: "400px",
       data: dialogData
     });
 
@@ -169,6 +162,13 @@ export class QuoteComponent implements OnInit {
         this.removeDependent(employee, dependent);
       }
     });
+  }
+
+  public trackByPersonId(index: number, person: Person): string {
+    if (person.id) {
+      return person?.id?.toString();
+    }
+    return '-1';
   }
 
   private removeDependent(employee: Employee, dependent: Dependent) {
@@ -181,10 +181,8 @@ export class QuoteComponent implements OnInit {
 
   private displayMessage(title: string, message: string): void {
     const dialogData = new MessageDialogModel(title, message);
-    const dialogRef = this.dialog.open(MessageDialogComponent, {
-      maxWidth: "400px",
+    this.dialog.open(MessageDialogComponent, {
       data: dialogData
     });
-
   }
 }

@@ -13,11 +13,11 @@ export class QuoteService {
   constructor(private httpClient: HttpClient) { 
   }
 
-  public get(): Observable<Quote> {
-    return this.httpClient.get<Quote>('api/quotes');
+  public get(id: number): Observable<Quote> {
+    return this.httpClient.get<Quote>(`api/quotes/${id}`);
   }
 
   public put(quote: Quote): Observable<any> {
-    return this.httpClient.put('api/quotes', quote);
+    return this.httpClient.put<Quote>('api/quotes', quote);
   }
 }

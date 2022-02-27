@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable, of } from 'rxjs';
@@ -15,7 +14,7 @@ export class MockQuoteService {
   constructor() { 
   }
 
-  public get(): Observable<Quote> {
+  public get(id: number): Observable<Quote> {
     const quote = new Quote();
     quote.employees = [new Employee(), new Employee()];
     quote.employees[0].firstName = 'Chris';
@@ -27,7 +26,7 @@ export class MockQuoteService {
     return of(quote);
   }
 
-  public put(quote: Quote): Observable<any> {
-      return of(null);
+  public put(quote: Quote): Observable<Quote> {
+      return of(quote);
   }
 }
