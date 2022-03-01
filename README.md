@@ -2,7 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.5.
 
-Used Visual Studio Code to develop this application
+Visual Studio Code was used to develop this application
+
+Uses proxy config to connect to the Wep Api
 
 ## Development server
 
