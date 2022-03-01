@@ -14,10 +14,10 @@ export class QuoteService {
   }
 
   public get(id: number): Observable<Quote> {
-    return this.httpClient.get<Quote>(`api/quotes/${id}`);
+    return this.httpClient.get<Quote>(`api/insurance/${id}`);
   }
 
   public put(quote: Quote): Observable<any> {
-    return this.httpClient.put<Quote>('api/quotes', quote);
+    return this.httpClient.put<Quote>('api/insurance', quote);
   }
 }

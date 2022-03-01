@@ -9,6 +9,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { PersonDialogComponent } from '@features/quotes/components/person-dialog/person-dialog.component';
 import { QuoteComponent } from '@features/quotes/components/quote/quote.component';
@@ -32,7 +33,8 @@ import { UxModule } from '@features/ux/ux.module';
     MatNativeDateModule,
     MatButtonModule,
     MatButtonToggleModule,
-    UxModule
+    UxModule,
+    HttpClientModule
   ],
   providers: [MatDatepickerModule]
 })

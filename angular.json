@@ -79,7 +79,8 @@
               "browserTarget": "insurance:build:production"
             },
             "development": {
-              "browserTarget": "insurance:build:development"
+              "browserTarget": "insurance:build:development",
+              "proxyConfig": "./proxy.config.json"
             }
           },
           "defaultConfiguration": "development"

@@ -8,10 +8,10 @@ import { Dependent } from '@features/quotes/models/dependent';
 import { Employee } from '@features/quotes/models/employee';
 import { Person } from '@features/quotes/models/person';
 import { Quote } from '@features/quotes/models/quote';
-import { MockQuoteService } from '@features/quotes/services/mock-quote.service';
 import { PersonDialogComponent, PersonDialogModel } from '@features/quotes/components/person-dialog/person-dialog.component';
 import { ConfirmDialogComponent, ConfirmDialogModel } from '@features/ux/components/confirm-dialog/confirm-dialog.component';
 import { MessageDialogComponent, MessageDialogModel } from '@features/ux/components/message-dialog/message-dialog.component';
+import { QuoteService } from '@features/quotes/services/quote.service';
 
 @Component({
   selector: 'app-quote',
@@ -24,15 +24,16 @@ export class QuoteComponent implements OnInit {
   @ViewChildren(MatExpansionPanel) panels!: QueryList<MatExpansionPanel>;
     
   public quoteAmount: number = 0;
-  public quote: Quote = new Quote();
+  public quote: Quote;
   public employeesQuote: Array<number> = []
   
-  constructor(public dialog: MatDialog, private zone: NgZone, private quoteService: MockQuoteService) { 
+  constructor(public dialog: MatDialog, private zone: NgZone, private quoteService: QuoteService) { 
+    this.quote = new Quote();
   }
 
   public ngOnInit(): void {
-    this.quoteService.get(0).pipe(take(1)).subscribe(quote => {
-      this.quote = quote;
+    this.quoteService.get(1).pipe(take(1)).subscribe(quote => {
+      this.quote = new Quote(quote);
       this.quoteChanged();
     });
   }
