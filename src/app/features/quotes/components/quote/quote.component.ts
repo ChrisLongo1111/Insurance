@@ -2,7 +2,7 @@ import { Component, NgZone, OnInit, QueryList, ViewChild, ViewChildren } from '@
 
 import { MatDialog } from '@angular/material/dialog';
 import { MatAccordion, MatExpansionPanel } from '@angular/material/expansion';
-import { take } from 'rxjs';
+import { map, Observable, take } from 'rxjs';
 
 import { Dependent } from '@features/quotes/models/dependent';
 import { Employee } from '@features/quotes/models/employee';
@@ -25,6 +25,7 @@ export class QuoteComponent implements OnInit {
     
   public quoteAmount: number = 0;
   public quote: Quote;
+  public quote$: Observable<any> | undefined;
   public employeesQuote: Array<number> = []
   
   constructor(public dialog: MatDialog, private zone: NgZone, private quoteService: QuoteService) { 
@@ -32,15 +33,11 @@ export class QuoteComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.quoteService.get(1).pipe(take(1)).subscribe({
-      next: quote => {
-        this.quote = quote;
-        this.quoteChanged();
-      },
-      error: error => {
-        this.displayMessage('Error', error.error);
-      }
-    });
+    this.quote$ = this.quoteService.get(1).pipe(take(1)).pipe(map(quote => {
+      this.quote = quote;
+      this.quoteChanged();
+      return quote;
+    }));
   }
 
   public quoteChanged(): void {

@@ -13,7 +13,7 @@
         </span>
     </div>
     <mat-accordion class="quote__employee" [multi]="true">
-        <mat-expansion-panel *ngFor="let employee of quote.employees; let i = index; trackBy: trackByPersonId">
+        <mat-expansion-panel *ngFor="let employee of (quote$ | async)?.employees; let i = index; trackBy: trackByPersonId">
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     <mat-icon>account_circle</mat-icon>
