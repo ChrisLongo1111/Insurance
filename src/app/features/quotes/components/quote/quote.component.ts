@@ -32,9 +32,14 @@ export class QuoteComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.quoteService.get(1).pipe(take(1)).subscribe(quote => {
-      this.quote = quote;
-      this.quoteChanged();
+    this.quoteService.get(1).pipe(take(1)).subscribe({
+      next: quote => {
+        this.quote = quote;
+        this.quoteChanged();
+      },
+      error: error => {
+        this.displayMessage('Error', error.error);
+      }
     });
   }
 
@@ -107,9 +112,9 @@ export class QuoteComponent implements OnInit {
   }
 
   public save(): void {
-    this.quoteService.put(this.quote).pipe(take(1)).subscribe(() =>
-      {
-        this.displayMessage('Quote', 'Saved');
+    this.quoteService.put(this.quote).pipe(take(1)).subscribe({
+        next: () => this.displayMessage('Quote', 'Saved'),
+        error: (error) => this.displayMessage('Error', error.error)
       }
     );
   } 

@@ -19,7 +19,7 @@ export class QuoteService {
     }));
   }
 
-  public put(quote: Quote): Observable<any> {
-    return this.httpClient.put<Quote>('api/insurance', quote);
+  public put(quote: Quote): Observable<number> {
+    return this.httpClient.put<number>('api/insurance', quote);
   }
 }

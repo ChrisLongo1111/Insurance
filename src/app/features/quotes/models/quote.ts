@@ -5,6 +5,7 @@ export interface IQuote {
     id: number | undefined;
     employees: Array<Employee>;
 }
+
 export class Quote implements IQuote {
     public id: number | undefined;
     public employees: Array<Employee> = [];
