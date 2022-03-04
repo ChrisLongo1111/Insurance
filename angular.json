@@ -76,7 +76,8 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "insurance:build:production"
+              "browserTarget": "insurance:build:production",
+              "proxyConfig": "./proxy.config.json"
             },
             "development": {
               "browserTarget": "insurance:build:development",

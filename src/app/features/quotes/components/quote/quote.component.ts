@@ -33,7 +33,7 @@ export class QuoteComponent implements OnInit {
 
   public ngOnInit(): void {
     this.quoteService.get(1).pipe(take(1)).subscribe(quote => {
-      this.quote = new Quote(quote);
+      this.quote = quote;
       this.quoteChanged();
     });
   }

@@ -10,9 +10,7 @@ export class Employee extends Person {
     constructor(employee?: IEmployee) {
         super(employee);
         if (employee) {
-            employee.dependents.forEach(dependent => {
-                this.dependents.push(new Dependent(dependent));
-            })
+            this.dependents = employee.dependents.map(dependent => new Dependent(dependent))
         }
     }
 

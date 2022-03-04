@@ -8,9 +8,6 @@ import { ConfirmDialogComponent } from './confirm-dialog.component';
 describe('ConfirmDialogComponent', () => {
   let component: ConfirmDialogComponent;
   let fixture: ComponentFixture<ConfirmDialogComponent>;
-  const mockDialogRef = {
-    close: jasmine.createSpy('close')
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

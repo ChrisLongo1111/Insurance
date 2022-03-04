@@ -15,24 +15,17 @@ export class Benefits {
         } else if (person instanceof Employee) {
             cost = environment.employeeCost;
         }
-        this.discounts.forEach(discount => {
-            cost -= discount.calculate(person, cost);
-        });
+        cost -= this.discounts.map(discount => discount.calculate(person, cost)).reduce((a, b) => a + b);
         return cost;
     }
 
     public static getEmployeeCost(employee: Employee): number {
-        let quote: number = 0;
-        quote += Benefits.getCost(employee);
-        employee.dependents.forEach(dependent => {
-            quote += Benefits.getCost(dependent);
-        })
-        return quote;
+        return Benefits.getCost(employee) + employee.dependents.map(dependent => Benefits.getCost(dependent)).reduce((a, b) => a + b);
     }
 
     public static getIncome(person: Person): number {
         if (person instanceof Employee) {
-            return 2000;
+            return environment.employeeIncome;
         }
         return 0;
     }

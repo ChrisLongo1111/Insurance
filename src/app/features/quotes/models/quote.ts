@@ -12,25 +12,15 @@ export class Quote implements IQuote {
     constructor(quote?: IQuote) {
         if (quote) {
             this.id = quote.id;
-            quote.employees.forEach(employee => {
-                this.employees.push(new Employee(employee));
-            });
+            this.employees = quote.employees.map(employee => new Employee(employee));
         }
     }
 
     public calculate(): number {
-        let quote = 0;
-        this.employees.forEach(employee => {
-            quote += Benefits.getEmployeeCost(employee);
-        })
-        return quote;
+        return this.employees.map(employee => Benefits.getEmployeeCost(employee)).reduce((a, b) => a + b);
     }
 
     public calculateByEmployee(): Array<number> {
-        const quoteByEmployee: Array<number> = [];
-        this.employees.forEach(employee => {
-            quoteByEmployee.push(Benefits.getEmployeeCost(employee));
-        })
-        return quoteByEmployee;
+        return this.employees.map(employee => Benefits.getEmployeeCost(employee));
     }
 }

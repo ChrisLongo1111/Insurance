@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
-import { Quote } from '@features/quotes/models/quote';
+import { IQuote, Quote } from '@features/quotes/models/quote';
 
 @Injectable({
   providedIn: 'any'
@@ -14,7 +14,9 @@ export class QuoteService {
   }
 
   public get(id: number): Observable<Quote> {
-    return this.httpClient.get<Quote>(`api/insurance/${id}`);
+    return this.httpClient.get<IQuote>(`api/insurance/${id}`).pipe(map(quote => {
+      return new Quote(quote);
+    }));
   }
 
   public put(quote: Quote): Observable<any> {

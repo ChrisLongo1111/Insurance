@@ -8,9 +8,6 @@ import { MessageDialogComponent } from './message-dialog.component';
 describe('MessageDialogComponent', () => {
   let component: MessageDialogComponent;
   let fixture: ComponentFixture<MessageDialogComponent>;
-  const mockDialogRef = {
-    close: jasmine.createSpy('close')
-  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({

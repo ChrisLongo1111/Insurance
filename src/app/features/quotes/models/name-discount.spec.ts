@@ -1,8 +1,5 @@
-import { Benefits } from './benefits';
-import { Dependent } from './dependent';
-import { Employee } from './employee';
-import { NameDiscount } from './name-discount';
-import { Person } from './person';
+import { Employee } from '@features/quotes/models/employee';
+import { NameDiscount } from '@features/quotes/models/name-discount';
 
 describe('Name Discount', () => {
     let nameDiscount = new NameDiscount();
