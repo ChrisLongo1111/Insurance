@@ -1,6 +1,6 @@
 import { environment } from "environments/environment";
-import { Dependent, IDependent } from "./dependent";
-import { IPerson, Person } from "./person";
+import { Dependent, IDependent } from "@features/quotes/models/dependent";
+import { IPerson, Person } from "@features/quotes/models/person";
 
 export interface IEmployee extends IPerson {
     dependents: Array<IDependent>;

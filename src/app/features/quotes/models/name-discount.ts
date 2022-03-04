@@ -1,6 +1,6 @@
 import { environment } from "environments/environment";
-import { Discount } from "./discount";
-import { Person } from "./person";
+import { Discount } from "@features/quotes/models/discount";
+import { Person } from "@features/quotes/models/person";
 
 export class NameDiscount implements Discount {
     public calculate(person: Person, cost: number): number {
