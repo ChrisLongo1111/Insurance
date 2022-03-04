@@ -18,7 +18,7 @@ export class Quote implements IQuote {
     }
 
     public calculate(): number {
-        return this.employees.map(employee => Benefits.getEmployeeCost(employee)).reduce((a, b) => a + b);
+        return this.employees.map(employee => Benefits.getEmployeeCost(employee)).reduce((a, b) => a + b, 0);
     }
 
     public calculateByEmployee(): Array<number> {

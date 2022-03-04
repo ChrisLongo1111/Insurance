@@ -15,12 +15,12 @@ export class Benefits {
         } else if (person instanceof Employee) {
             cost = environment.employeeCost;
         }
-        cost -= this.discounts.map(discount => discount.calculate(person, cost)).reduce((a, b) => a + b);
+        cost -= this.discounts.map(discount => discount.calculate(person, cost)).reduce((a, b) => a + b, 0);
         return cost;
     }
 
     public static getEmployeeCost(employee: Employee): number {
-        return Benefits.getCost(employee) + employee.dependents.map(dependent => Benefits.getCost(dependent)).reduce((a, b) => a + b);
+        return Benefits.getCost(employee) + employee.dependents?.map(dependent => Benefits.getCost(dependent))?.reduce((a, b) => a + b, 0);
     }
 
     public static getIncome(person: Person): number {
