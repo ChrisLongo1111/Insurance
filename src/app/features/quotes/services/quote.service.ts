@@ -4,11 +4,12 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 
 import { IQuote, Quote } from '@features/quotes/models/quote';
+import { IQouteService } from '@features/quotes/models/quote.service.model';
 
 @Injectable({
   providedIn: 'any'
 })
-export class QuoteService {
+export class QuoteService implements IQouteService{
 
   constructor(private httpClient: HttpClient) { 
   }

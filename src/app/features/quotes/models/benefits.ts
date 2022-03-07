@@ -6,7 +6,7 @@ import { NameDiscount } from "@features/quotes/models/name-discount";
 import { Person } from "@features/quotes/models/person";
 
 export class Benefits {
-    private static discounts: Array<Discount> = [new NameDiscount]
+    private static discounts: Array<Discount> = [new NameDiscount()]
 
     public static getCost(person: Person): number {
         let cost: number = 0;
