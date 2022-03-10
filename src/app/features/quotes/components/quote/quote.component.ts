@@ -73,9 +73,7 @@ export class QuoteComponent implements OnInit {
   }
 
   public editEmployee(employee: Employee): void {
-    const person = new Person();
-    person.firstName = employee.firstName;
-    person.lastName = employee.lastName;
+    const person = new Person(employee);
     const dialogData = new PersonDialogModel("Edit Employee", person);
 
     const dialogRef = this.dialog.open(PersonDialogComponent, {
@@ -136,11 +134,8 @@ export class QuoteComponent implements OnInit {
   }
 
   public editDependent(dependent: Dependent): void {
-    const person = new Person();
-    person.firstName = dependent.firstName;
-    person.lastName = dependent.lastName;
-
-    const dialogData = new PersonDialogModel("Add Dependent", person);
+    const person = new Person(dependent);
+    const dialogData = new PersonDialogModel("Edit Dependent", person);
     const dialogRef = this.dialog.open(PersonDialogComponent, {
       data: dialogData
     });
